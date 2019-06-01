@@ -1,0 +1,18 @@
+{
+    "extends": "eslint:recommended",
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
+    "rules": {
+        "brace-style": ["error", "1tbs", { "allowSingleLine": false }],
+        "template-curly-spacing": ["error", "never"],
+        "comma-dangle": ["error", "never"],
+        "comma-spacing": ["error", { "before": false, "after": true }],
+        "curly": ["error", "multi-line", "consistent"],
+        "no-console": "off"
+    }
+}

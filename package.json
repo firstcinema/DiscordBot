@@ -1,0 +1,23 @@
+{
+    "name": "firstcinema",
+    "version": "1.0.0",
+    "description": "An open-sourced discord bot for the firstcinema project",
+    "main": "index.js",
+    "scripts": {
+        "bot": "pm2 start index.js --name \"FirstCinema-Discord\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/firstcinema/DiscordBot.git"
+    },
+    "author": "Savvy",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/firstcinema/DiscordBot/issues"
+    },
+    "homepage": "https://github.com/firstcinema/DiscordBot#readme",
+    "dependencies": {
+        "discord.js": "^11.5.1",
+        "eslint": "^5.16.0"
+    }
+}
