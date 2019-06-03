@@ -3,7 +3,7 @@ module.exports = {
     aliases: ['shutdown', 'restart'],
     execute: function(message) {
         if (!message.member.hasPermission('ADMINISTRATOR')) return;
-        message.reply('rebooting Discord Bot').then(() => {
+        message.reply('Rebooting Discord Bot').then(() => {
             process.exit();
         });
     }

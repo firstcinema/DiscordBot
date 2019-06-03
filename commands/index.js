@@ -28,6 +28,10 @@ module.exports = (client) => {
             return;
         }
 
+        if (command.guildOnly && message.channel.type !== 'text') {
+            return message.reply('This command is only executable within the server.');
+        }
+
         try {
             command.execute(message, args);
         } catch (error) {
