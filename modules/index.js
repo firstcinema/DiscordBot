@@ -19,4 +19,9 @@ module.exports = function(client) {
         client.modules.filter(module => module.events.hasOwnProperty('onReady'))
             .forEach(module => module.events.onReady(client));
     });
+
+    client.on('guildMemberAdd', (member) => {
+        client.modules.filter(module => module.events.hasOwnProperty('onJoin'))
+            .forEach(module => module.events.onJoin(member));
+    });
 }

@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const LevelsUtil = require('../utils/LevelsUtils');
 
 const ONE_MINUTE = 60 * 1000;
 
@@ -18,21 +19,31 @@ module.exports = {
             }
 
             let date = user.levels.lastReceived;
+
             if (((new Date) - date) < ONE_MINUTE) {
                 return;
             }
 
             let inc = Math.floor(Math.random() * 25) + 15;
 
-            console.log(inc);
-            User.updateOne({
-                discordId: author.id
-            }, {
+            let exp = user.levels.experience + inc;
+
+            let level = LevelsUtil.getLevel(user.levels.experience);
+
+            let newLevel = LevelsUtil.getLevel(exp);
+
+            User.updateOne({ discordId: author.id }, {
                 levels: {
-                    experience: user.levels.experience + inc,
+                    experience: exp,
                     lastReceived: Date.now()
                 }
-            }).exec();
+            }).exec((error) => {
+                // To be replaced with a webhook message
+                if (error) console.error(error);
+                if (level !== newLevel) {
+                    message.reply(' has leveled up');
+                }
+            });
         }
     }
 }

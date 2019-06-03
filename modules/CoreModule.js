@@ -25,6 +25,9 @@ module.exports = {
             client.guilds.forEach(guild => {
                 handleMembers(guild.members);
             });
+        },
+        onJoin: async function(member) {
+            handleUser(member.user);
         }
     }
 }
