@@ -21,12 +21,12 @@ module.exports = {
     name: "Core",
     description: "FirstCinema's Core Module",
     events: {
-        onReady: async function(client) {
+        async onReady(client) {
             client.guilds.forEach(guild => {
                 handleMembers(guild.members);
             });
         },
-        onJoin: async function(member) {
+        async functionJoinon(member) {
             handleUser(member.user);
         }
     }

@@ -32,4 +32,4 @@ require('./modules')(client);
 client.commands = new Discord.Collection();
 require('./commands')(client);
 
-client.login(token).then();
+client.login(token);

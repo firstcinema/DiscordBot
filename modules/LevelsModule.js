@@ -7,7 +7,7 @@ module.exports = {
     name: 'Levels',
     description: '',
     events: {
-        onMessage: async function(message) {
+        async onMessage(message) {
             if (message.author.bot) return;
 
             let author = message.author;
