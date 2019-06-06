@@ -1,11 +1,11 @@
-const fs = require('fs');
+const Utils = require('../utils/Utils')
 
 module.exports = function(client) {
-    const moduleFiles = fs.readdirSync('./modules/').filter(file =>
-        file.endsWith('js') && !file.startsWith('index'));
+
+    let moduleFiles = Utils.getAllFiles(__dirname);
 
     for (const moduleFile of moduleFiles) {
-        let module = require(`./${moduleFile}`);
+        let module = require(moduleFile);
         client.modules.set(module.name, module);
         console.log(`Registering Module '${module.name}'`);
     }

@@ -1,13 +1,12 @@
-const fs = require('fs');
+const Utils = require('../utils/Utils');
 const { prefix } = require('../config/config.json');
 
 module.exports = (client) => {
-    const cmdFiles = fs.readdirSync('./commands/').filter(file => {
-        return file.endsWith('js') && !file.startsWith('index')
-    });
+
+    let cmdFiles = Utils.getAllFiles(__dirname);
 
     for (const file of cmdFiles) {
-        let command = require(`./${file}`);
+        let command = require(file);
         client.commands.set(command.name, command);
         console.log(`Registering Command '${command.name}'`);
     }
@@ -30,6 +29,10 @@ module.exports = (client) => {
 
         if (command.guildOnly && message.channel.type !== 'text') {
             return message.reply('This command is only executable within the server.');
+        }
+
+        if (command.voiceOnly && !message.member.voiceChannel) {
+            return message.reply('You must be in a voice channel to execute this command');
         }
 
         try {

@@ -26,7 +26,7 @@ module.exports = {
                 handleMembers(guild.members);
             });
         },
-        async functionJoinon(member) {
+        async onJoin(member) {
             handleUser(member.user);
         }
     }

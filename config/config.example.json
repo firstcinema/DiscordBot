@@ -1,5 +1,7 @@
 {
     "prefix": "?",
     "token": "",
-    "mongoURI": ""
+    "mongoURI": "",
+    "youtubeKey": "",
+    "music_channel_id": ""
 }
