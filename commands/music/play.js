@@ -32,7 +32,30 @@ module.exports = {
             return message.reply('I do not have permission to speak in that voice channel! :(');
         }
 
+        if (!args.length) {
+
+            if (!voiceChannel.connection) {
+                message.reply('I am currently not playing any music');
+                return;
+            }
+
+            let connection = voiceChannel.connection;
+
+            let dispatcher = connection.dispatcher;
+
+            if (!dispatcher.paused) {
+                message.reply('music player is already playing.');
+                return;
+            }
+
+            dispatcher.resume();
+
+            message.reply('Current track has been resumed');
+            return;
+        }
+
         let url = args[0];
+
         if (!pattern.test(args[0])) {
             try {
                 let response = await search(args.join(' '));
